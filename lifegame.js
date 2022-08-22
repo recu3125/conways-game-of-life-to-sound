@@ -69,7 +69,7 @@ function next() {
     return;
   }
   time+=1
-  if(time%document.getElementById("speedr").value==0){
+  if(time%(100-document.getElementById("speedr").value)==0){
     time=0
   }
   else{
