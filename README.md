@@ -1,3 +1,5 @@
-## <a href = "https://recu3125.github.io/conways-game-of-life-to-sound/">conways-game-of-life-to-sound</a>
+# conways-game-of-life-to-sound
+
+## <a href = "https://recu3125.github.io/conways-game-of-life-to-sound/">try it!</a>
 <br>
-<a href="https://youtu.be/N03j5OLAawM">video</a>
+<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">don't know what conway's game of life is?</a>
