@@ -70,7 +70,7 @@ function display() {
 
 let time = 0
 function next() {
-  if(toggle==0){
+  if (toggle == 0) {
     setTimeout(next, (1000 - document.getElementById("speedr").value))
     return
   }
@@ -198,8 +198,12 @@ function makesound() {
     var coloroff = ["#FFCCCC", "#FFDFCC", "#FFFFCC", "#CCCCFF", "#CCFFFF"]
     for (j = 0; j < groups[i].length; j++) {
       elements[groups[i][j].y - 1][groups[i][j].x - 1].bgColor = color[groupdoremi]
-      setTimeout(display, (1000 - document.getElementById("speedr").value * 1) * 2 / 3)
     }
+    setTimeout(() => {
+      for (j = 0; j < groups[i].length; j++) {
+        elements[groups[i][j].y - 1][groups[i][j].x - 1].bgColor = coloroff[groupdoremi]
+      }
+    }, (1000 - document.getElementById("speedr").value * 1) * 2 / 3)
   }
   let volsum
   gonnabeep.map(x => volsum += x)
@@ -214,7 +218,7 @@ function makesound() {
 
 const myAudioContext = new AudioContext()
 function beep(duration, frequency, volume) {
-  duration = duration+400
+  duration = duration + 400
   frequency = frequency
   volume = volume || 50
   let oscillatorNode = myAudioContext.createOscillator()
