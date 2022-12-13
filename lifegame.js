@@ -199,15 +199,11 @@ function makesound() {
     for (j = 0; j < groups[i].length; j++) {
       elements[groups[i][j].y - 1][groups[i][j].x - 1].bgColor = color[groupdoremi]
     }
-    setTimeout(() => {
-      for (j = 0; j < groups[i].length; j++) {
-        elements[groups[i][j].y - 1][groups[i][j].x - 1].bgColor = coloroff[groupdoremi]
-      }
-    }, (1000 - document.getElementById("speedr").value * 1) * 2 / 3)
   }
-  let volsum
+  setTimeout(display, (1000 - document.getElementById("speedr").value * 1) * 2 / 3)
+  let volsum = 0
   gonnabeep.map(x => volsum += x)
-  gonnabeep.map(x => x = Math.round(x / volsum * 100))
+  gonnabeep = gonnabeep.map(x => Math.round(x / volsum * 50))
   var freq = [261.6, 293.6, 329.6, 392.0, 440.0]
   for (let i = 0; i < 5; i++) {
     if (gonnabeep[i] != 0) {
