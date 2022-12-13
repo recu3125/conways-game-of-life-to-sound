@@ -170,7 +170,7 @@ function makegroup() {
 
 function makesound() {
   let groups = makegroup()
-  gonnabeep = [0, 0, 0, 0, 0]
+  gonnabeep = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   for (i = 0; i < groups.length; i++) {
     // let groupdoremi = 0 //0~4 도레미솔라 펜타토닉
     // let groupcount = 0
@@ -191,11 +191,10 @@ function makesound() {
     //   }
 
     // }
-    let groupdoremi = groups[i].length % 5
+    let groupdoremi = groups[i].length % 15
     gonnabeep[groupdoremi] += groups[i].length
 
-    var color = ["#FF7777", "#FFAA77", "#FFFF77", "#7777FF", "#77FFFF"]
-    var coloroff = ["#FFCCCC", "#FFDFCC", "#FFFFCC", "#CCCCFF", "#CCFFFF"]
+    var color = ["#3333AA", "#33AAAA", "#DD4444", "#DD7744", "#DDDD44", "#7777FF", "#77FFFF", "#FF7777", "#FFAA77", "#FFFF77", "#CCCCFF", "#CCFFFF", "#FFCCCC", "#FFDFCC", "#FFFFCC"]
     for (j = 0; j < groups[i].length; j++) {
       elements[groups[i][j].y - 1][groups[i][j].x - 1].bgColor = color[groupdoremi]
     }
@@ -204,8 +203,8 @@ function makesound() {
   let volsum = 0
   gonnabeep.map(x => volsum += x)
   gonnabeep = gonnabeep.map(x => Math.round(x / volsum * 50))
-  var freq = [261.6, 293.6, 329.6, 392.0, 440.0]
-  for (let i = 0; i < 5; i++) {
+  var freq = [392.0 / 4, 440.0 / 4, 261.6 / 2, 293.6 / 2, 329.6 / 2, 392.0 / 2, 440.0 / 2, 261.6, 293.6, 329.6, 392.0, 440.0, 261.6 * 2, 293.6 * 2, 329.6 * 2]
+  for (let i = 0; i < 15; i++) {
     if (gonnabeep[i] != 0) {
       beep(1000 - document.getElementById("speedr").value * 1, freq[i], gonnabeep[i])
     }
