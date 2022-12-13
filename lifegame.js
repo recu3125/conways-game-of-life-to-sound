@@ -202,7 +202,9 @@ function makesound() {
   setTimeout(display, (1000 - document.getElementById("speedr").value * 1) * 2 / 3)
   let volsum = 0
   gonnabeep.map(x => volsum += x)
-  gonnabeep = gonnabeep.map(x => Math.round(x / volsum * 50))
+  if (volsum != 0) {
+    gonnabeep = gonnabeep.map(x => Math.round(x / volsum * 50))
+  }
   var freq = [392.0 / 4, 440.0 / 4, 261.6 / 2, 293.6 / 2, 329.6 / 2, 392.0 / 2, 440.0 / 2, 261.6, 293.6, 329.6, 392.0, 440.0, 261.6 * 2, 293.6 * 2, 329.6 * 2]
   for (let i = 0; i < 15; i++) {
     if (gonnabeep[i] != 0) {
