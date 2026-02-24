@@ -1,20 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="title" content="conways game of life to sound">
+  <title>Conway's Game of Life to Sound</title>
   <meta name="google" value="notranslate">
-</head>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --panel: #ffffff;
+      --border: #d7dbe0;
+      --text: #121417;
+      --muted: #606a76;
+      --accent: #0f1720;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      width: 100%;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      padding: 10px 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: center;
+    }
+
+    .group {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .group strong {
+      color: var(--text);
+      font-weight: 600;
+      min-width: 32px;
+      text-align: right;
+    }
+
+    input[type="range"] {
+      width: 140px;
+    }
+
+    button {
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: var(--accent);
+    }
+
+    .meta {
+      margin-left: auto;
+      display: inline-flex;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      align-items: center;
+    }
+
+    .meta a {
+      color: #243e75;
+      text-decoration: underline;
+    }
+
+    #board-wrap {
+      width: 100%;
+      margin: 0;
+      border: 1px solid #20252a;
+      background: #fff;
+      overflow: auto;
+      flex: 1;
+    }
+  </style>
+</head>
 <body id="body" onload="load()">
-  <label> speed : <input type="range" min="0" max="999" value="500" id="speedr"> </label>
-  <label>generate sound<input type="checkbox" id="soundswitch">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  <button id="toggle" onclick="togglebtn()" style="margin:0 auto;">-  OFF  -</button>
-  if you like this project, pease give me a <a href="https://github.com/recu3125/conways-game-of-life-to-sound">star</a>! <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Frecu3125.github.io%2Fconways-game-of-life-to-sound%2F&count_bg=%23000000&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+  <section class="topbar">
+    <label class="group">Speed
+      <input type="range" min="40" max="950" value="500" id="speedr">
+    </label>
+    <label class="group">
+      <input type="checkbox" id="soundswitch" checked>
+      Sound
+    </label>
+    <button id="toggle" onclick="togglebtn()">Start</button>
+    <button class="secondary" id="clear-btn" type="button">Clear</button>
+    <button class="secondary" id="random-btn" type="button">Random</button>
+    <div class="meta">
+      <span>Generation: <strong id="generation">0</strong></span>
+      <span>Live Cells: <strong id="live-count">0</strong></span>
+      <a href="https://github.com/recu3125/conways-game-of-life-to-sound" target="_blank" rel="noopener noreferrer">if you like this project, pease give me a star!</a>
+    </div>
+  </section>
+
+  <main id="board-wrap"></main>
 </body>
 <script src="lifegame.js"></script>
-
 </html>
